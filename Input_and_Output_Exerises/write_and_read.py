@@ -1,0 +1,12 @@
+﻿path = r"sample_data\hello.py"
+file = open(path, "wb")
+file.write(b'file = open("my_file.txt", "wb")\r\n')
+file.write(b'file.write(b"Hello, World!\\r\\n")\r\n')
+file.write(b'file.close()\r\n')
+file.write(b'print("Hello, World!")\r\n')
+file.write(b'input("Press Any Key to Continue...")\r\n')
+file.close()
+file = open(path, "rb")
+print(file.read().decode("utf-8"))
+file.close()
+input("Press Any Key to Continue...")
