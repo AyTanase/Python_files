@@ -1,4 +1,5 @@
 ﻿import re
+from traceback import print_exc
 import traceback
 
 def first_lines(path, n=0):
@@ -10,21 +11,36 @@ def first_lines(path, n=0):
             file.read().decode("utf-8")
         )[0]
     except:
-        traceback.print_exc()
+        print_exc()
     finally:
         file.close()
     return content
 
-def last_words(path, n=0):
-    content = None
-    file = open(path, "rb")
-    try:
-        content = re.search(
-            r"(?:\s+[^\s]+){0," + str(n) + "}\s*$",
-            file.read().decode("utf-8")
-        )[0]
-    except:
-        traceback.print_exc()
-    finally:
-        file.close()
-    return content
+def define_last_words():
+    rx = re.compile("\s+")
+
+    def last_words(path, n=0):
+        nonlocal rx
+        words = None
+        ret = ""
+        file = open(path, "rb")
+        try:
+            words = rx.split(file.read().decode("utf-8"))
+            if words[0] == "":
+                del words[0]
+            if words[len(words) - 1] == "":
+                del words[len(words) - 1]
+            if len(words) < n:
+                n = len(words)
+            for i in range(len(words) - n, len(words)):
+                ret += words[i] + " "
+        except:
+            print_exc()
+        finally:
+            file.close()
+        return ret
+
+    return last_words
+
+last_words = define_last_words()
+define_last_words = None
