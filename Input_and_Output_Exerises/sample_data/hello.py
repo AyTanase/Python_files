@@ -1,5 +1,0 @@
-file = open("my_file.txt", "wb")
-file.write(b"Hello, World!\r\n")
-file.close()
-print("Hello, World!")
-input("Press Any Key to Continue...")
