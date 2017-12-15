@@ -25,12 +25,16 @@ def define_last_words():
         ret = ""
         file = open(path, "rb")
         try:
-            words = rx.split(file.read().decode("utf-8"))
+            words = rx.findall(file.read().decode("utf-8"))
+            """
+            # unnecessary
+            if words[0] == "":
+                del words[0]
+            """
             i = len(words) - 1
             while n > 0 and i >= 0:
-                if words[i] != "":
-                    ret = words[i] + " " + ret
-                    n -= 1
+                ret = words[i] + " " + ret
+                n -= 1
                 i -= 1
         except:
             print_exc()
