@@ -1,6 +1,5 @@
 ﻿import re
 from traceback import print_exc
-import traceback
 
 def first_lines(path, n=0):
     content = None
