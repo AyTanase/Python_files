@@ -16,7 +16,7 @@ def first_lines(path, n=0):
     return content
 
 def define_last_words():
-    rx = re.compile(r"(\S+(?:(?<=-)[\r\n]\s*\S+)*)\s*|\s+")
+    rx = re.compile(r"(\S[^-\s]*(?:-(?:[\r\n]\s*)?[^-\s]*)*?)\s*|\s+")
 
     def last_words(path, n=0):
         nonlocal rx
