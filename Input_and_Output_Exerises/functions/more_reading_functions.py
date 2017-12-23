@@ -20,7 +20,6 @@ def define_last_words():
 
     def last_words(path, n=0):
         nonlocal rx
-        words = None
         ret = ""
         file = open(path, "rb")
         try:
