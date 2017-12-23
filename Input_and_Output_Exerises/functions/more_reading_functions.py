@@ -16,7 +16,7 @@ def first_lines(path, n=0):
     return content
 
 def define_last_words():
-    rx = re.compile(r"(\S[^-\s]*(?:-(?:[\r\n]\s*)?[^-\s]*)*?)\s*|\s+")
+    rx = re.compile(r"(\S[^-\s]*(?:-(?:[\r\n]\s*)?[^-\s]*)*)\s*|\s+")
 
     def last_words(path, n=0):
         nonlocal rx
@@ -25,11 +25,6 @@ def define_last_words():
         file = open(path, "rb")
         try:
             words = rx.findall(file.read().decode("utf-8"))
-            """
-            # unnecessary
-            if words[0] == "":
-                del words[0]
-            """
             i = len(words) - 1
             while n > 0 and i >= 0:
                 ret = words[i] + " " + ret
