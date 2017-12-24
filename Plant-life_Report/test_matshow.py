@@ -11,4 +11,4 @@ try:
 except:
     print_exc()
 finally:
-    input("Press any key to continue...")
+    input("Press Enter to continue...")

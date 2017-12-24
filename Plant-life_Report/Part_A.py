@@ -46,4 +46,4 @@ if __name__ == "__main__":
     except:
         print_exc()
     finally:
-        input("\nPress any key to continue...")
+        input("\nPress Enter to continue...")
