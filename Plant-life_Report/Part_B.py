@@ -1,5 +1,5 @@
 ﻿from Part_A import change_gps_data
-from numpy import zeros
+from numpy import zeros, nan
 
 # (3-1)
 def scale(df):
@@ -39,6 +39,8 @@ def mean_of_pH(df):
         for y in range(15):
             if count[x, y] != 0:
                 means[x, y] /= count[x, y]
+            else:
+                means[x, y] = nan
     return means
 
 if __name__ == "__main__":
@@ -60,7 +62,7 @@ if __name__ == "__main__":
         means = mean_of_pH(pH)
 
         # (4)
-        plt.matshow(means, origin="lower", cmap="plasma")
+        plt.matshow(means.T, origin="lower", cmap="plasma")
         plt.colorbar(cmap="plasma")
         plt.savefig("img/pH2017.png")
 
