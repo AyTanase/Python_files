@@ -11,7 +11,6 @@ def change_gps_data(df):
     df["GPS_lat"] *= 40008000 / 360
 
     # You can change df's members, but you cannot change df itself.
-    # df may be the copy of the pointer to the DataFrame.
     return df.rename(index=str, columns={"GPS_lat": "lat_m", "GPS_lon": "lon_m"})
 
 # (3)
